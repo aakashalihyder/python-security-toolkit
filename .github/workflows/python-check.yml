@@ -1,0 +1,63 @@
+name: Python Security Toolkit — Code Quality Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1 — Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2 — Set up Python
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # Step 3 — Install checking tools
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyflakes
+
+      # Step 4 — Check for syntax errors
+      - name: Check for syntax errors
+        run: |
+          echo "Checking Python syntax..."
+          python -m py_compile network_scanner.py
+          python -m py_compile password_checker.py
+          python -m py_compile hash_identifier.py
+          python -m py_compile security_toolkit.py
+          echo "✅ No syntax errors found"
+
+      # Step 5 — Check for code issues with pyflakes
+      - name: Run Pyflakes code analysis
+        run: |
+          echo "Running code analysis..."
+          pyflakes network_scanner.py
+          pyflakes password_checker.py
+          pyflakes hash_identifier.py
+          pyflakes security_toolkit.py
+          echo "✅ Code analysis complete"
+
+      # Step 6 — Confirm all files present
+      - name: Verify all toolkit files present
+        run: |
+          echo "Verifying toolkit files..."
+          files=("network_scanner.py" "password_checker.py" "hash_identifier.py" "security_toolkit.py" "README.md")
+          for file in "${files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ $file found"
+            else
+              echo "❌ $file MISSING"
+              exit 1
+            fi
+          done
+          echo "✅ All files verified"
