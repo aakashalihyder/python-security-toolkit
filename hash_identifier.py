@@ -9,7 +9,6 @@ Usage: python3 hash_identifier.py
 
 import hashlib
 import re
-import sys
 
 # ─────────────────────────────────────────────
 # HASH SIGNATURES
@@ -178,8 +177,8 @@ def generate_hashes(plaintext):
         h = func(plaintext.encode()).hexdigest()
         print(f"  {name:<10} : {h}")
 
-    print(f"\n  ⚠️  Note: These are unsalted hashes.")
-    print(f"  Real password storage should always use salted hashing.")
+    print("\n  Note: These are unsalted hashes.")
+    print("  Real password storage should always use salted hashing.")
 
 # ─────────────────────────────────────────────
 # MAIN MENU
@@ -220,9 +219,9 @@ def run_tool():
             print(f"  Length   : {len(hash_input)} characters")
 
             if not matches:
-                print(f"\n  [-] Hash type not recognised.")
-                print(f"  → Could be a custom hash, salted hash, or encoding")
-                print(f"  → Try CyberChef or hash-identifier tool for more options")
+                print("\n  [-] Hash type not recognised.")
+                print("  → Could be a custom hash, salted hash, or encoding")
+                print("  → Try CyberChef or hash-identifier tool for more options")
             else:
                 print(f"\n  POSSIBLE MATCHES: {len(matches)} found\n")
                 for match in matches:
@@ -257,16 +256,16 @@ def run_tool():
             print(f"  DICTIONARY ATTACK RESULTS")
             print(f"{'='*60}")
             if result:
-                print(f"\n  ✅ CRACKED!")
+                print(f"\n  CRACKED!")
                 print(f"  Hash      : {hash_input}")
                 print(f"  Plaintext : {result}")
-                print(f"\n  ⚠️  This password was found in a basic wordlist.")
-                print(f"  Real attackers use lists with 10 billion+ entries.")
+                print("\n  This password was found in a basic wordlist.")
+                print("  Real attackers use lists with 10 billion+ entries.")
             else:
-                print(f"\n  [-] Not found in wordlist.")
-                print(f"  → Password may be stronger or not in common wordlists")
-                print(f"  → Real tools: Hashcat with rockyou.txt (14M passwords)")
-                print(f"  → Try: hashcat -m 0 hash.txt rockyou.txt")
+                print("\n  [-] Not found in wordlist.")
+                print("  → Password may be stronger or not in common wordlists")
+                print("  → Real tools: Hashcat with rockyou.txt (14M passwords)")
+                print("  → Try: hashcat -m 0 hash.txt rockyou.txt")
 
         # ── OPTION 3: Generate hashes ──
         elif choice == "3":

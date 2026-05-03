@@ -226,8 +226,8 @@ def run_scanner():
     if save == "y":
         filename = f"scan_report_{target}_{start_time.strftime('%Y%m%d_%H%M%S')}.txt"
         with open(filename, "w", encoding="utf-8") as f:
-            f.write(f"NETWORK SECURITY SCAN REPORT\n")
-            f.write(f"{'='*60}\n")
+            f.write("NETWORK SECURITY SCAN REPORT\n")
+            f.write("=" * 60 + "\n")
             f.write(f"Target    : {target}\n")
             f.write(f"Scan Type : {scan_type}\n")
             f.write(f"Date/Time : {start_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
