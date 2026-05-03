@@ -6,6 +6,12 @@
 
 ---
 
+
+![Code Quality Check](https://github.com/aakashalihyder/python-security-toolkit/actions/workflows/python-check.yml/badge.svg)
+
+
+---
+
 ## 📋 Overview
 
 A collection of Python-based cybersecurity tools built to demonstrate practical security skills including network reconnaissance, password analysis, hash identification, and dictionary attacks. All tools are built using Python standard libraries only — no external dependencies required.
@@ -210,6 +216,8 @@ python3 hash_identifier.py
 - [NIST Password Guidelines (SP 800-63B)](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ---
+
+
 
 ## 📬 Contact
 
